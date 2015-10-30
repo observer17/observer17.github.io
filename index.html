@@ -187,8 +187,8 @@
             
             
               
-                <a class="post-title-link" href="/2015/10/28/hello-world/" itemprop="url">
-                  Hello World
+                <a class="post-title-link" href="/2015/10/31/how-to-build-blog-with-github-page/" itemprop="url">
+                  使用Github Pages & hexo搭建独立博客
                 </a>
               
             
@@ -198,8 +198,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-28T13:16:49+08:00" content="2015-10-28">
-              2015-10-28
+            <time itemprop="dateCreated" datetime="2015-10-31T00:59:14+08:00" content="2015-10-31">
+              2015-10-31
             </time>
           </span>
 
@@ -225,15 +225,40 @@
         
           <span itemprop="articleBody">
             
-              <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+              <h2 id="创建仓库">创建仓库</h2><p>在github创建一个名为“<github用户名>.github.io”的仓库，例如我的github用户名是observer17，所以仓库名是observer17.github.io。这样就可以使用<a href="https://pages.github.com/" target="_blank" rel="external">Github Pages</a>提供的服务。</github用户名></p>
+<p><img src="../../public/images/post_img/observer-blog-repo.png" alt="repo"></p>
+<h2 id="购买域名">购买域名</h2><p>在<a href="https://www.namecheap.com/" target="_blank" rel="external">namecheap</a>上购买域名</p>
+<p><img src="../../public/images/post_img/cheapname.png" alt="cheapname"></p>
+<h2 id="绑定独立域名到Github_Pages">绑定独立域名到Github Pages</h2><p>Github Pages会为之前创建的仓库提供一个和仓库名同名的域名服务，在仓库中加入index.html文件就可以正常访问了。要将其绑定到独立域名下，只需要在仓库根目录下新建一个CNAME文件，并写入要绑定的域名。</p>
+<pre><code><span class="comment"># my CNAME file</span>
+wangxiao.<span class="constant">space</span>
+</code></pre><h2 id="配置DNS">配置DNS</h2><p>注册<a href="https://www.dnspod.cn/" target="_blank" rel="external">dnspod</a>，添加域名</p>
+<p><img src="../../public/images/post_img/dnspod-domain.png" alt="dnspod-domain"></p>
+<p>添加域名之后点击进去，添加需要的记录</p>
+<p><img src="../../public/images/post_img/dnspod-record.png" alt="dnspod-record"></p>
+<p>两条A记录指向Github Pages提供的ip，可在这里<a href="https://help.github.com/articles/tips-for-configuring-an-a-record-with-your-dns-provider/" target="_blank" rel="external">查看</a>。一条CNAME记录指向github pages空间。</p>
+<h2 id="配置namecheap">配置<a href="https://www.namecheap.com" target="_blank" rel="external">namecheap</a></h2><p>完成DNS的配置后，需要去<a href="https://www.namecheap.com" target="_blank" rel="external">namecheap</a>修改nameserver。具体操作看<a href="https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-can-i-change-the-nameservers-for-my-domain" target="_blank" rel="external">这里</a>。nameserver的域名为dnspod中两条默认NS记录的记录值。</p>
+<p><img src="../../public/images/post_img/namecheap-nameserver.png" alt="namecheap-nameserver"></p>
+<h2 id="搭建完成">搭建完成</h2><p>到这里，利用Github Page的服务搭建的独立博客就完成了，但是这个时候我们的博客里还是空荡荡的。如果这个时候访问这blog的话，应该能看到github默认的404页面。</p>
+<p>所以，我们还需要一个博客系统。下面就是用<a href="https://hexo.io/" target="_blank" rel="external">hexo</a>来生成一个博客系统。</p>
+<h2 id="使用hexo生成博客系统">使用<a href="https://hexo.io/" target="_blank" rel="external">hexo</a>生成博客系统</h2><p>hexo是一个基于node的博客系统，所以请先确保已经安装好node环境。</p>
+<pre><code><span class="variable">$ </span>npm install hexo-cli -g    <span class="comment"># 安装hexo</span>
+<span class="variable">$ </span>npm init blog    <span class="comment"># 初始化一个blog</span>
+<span class="variable">$ </span>cd blog    
+<span class="variable">$ </span>npm install    <span class="comment"># 安装node_moduels</span>
+<span class="variable">$ </span>hexo server    <span class="comment"># 启动hexo</span>
+</code></pre><p> 这个时候就可以在localhost:4000本地访问到你的博客了。</p>
+<h2 id="部署博客到github">部署博客到github</h2><p>安装部署到github所需的插件</p>
+<p> <code>$ npm install hexo-deployer-git -g</code></p>
+<p>编辑博客根目录下的配置_config.yml，设置<a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">部署方式</a></p>
+<pre><code><span class="attribute">deploy</span>:
+    <span class="attribute">type</span>: git
+    <span class="attribute">repo</span>: <span class="string">"your git repo url"</span>
+    <span class="attribute">branch</span>: [branch]
+    <span class="attribute">message</span>: [message]
+</code></pre><p>然后执行部署命令</p>
+<p><code>$ hexo d -g</code></p>
+<p>部署成功的话就可以在你的域名下看到一个还算不错的博客了。</p>
 
             
           </span>
